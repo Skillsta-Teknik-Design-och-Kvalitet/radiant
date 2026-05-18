@@ -1,3 +1,3 @@
 RADIANT
-the project entails creating a webpage for skillsta 
+the project entails creating a webpage
 The project may use github
