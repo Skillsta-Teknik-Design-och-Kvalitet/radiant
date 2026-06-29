@@ -1,11 +1,395 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>My First Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skillsta | Advanced Technology & Life Sciences</title>
+  <style>
+    :root {
+      --bg: #f6f6f4;
+      --primary: #1f3c3d;
+      --secondary: #44696a;
+      --accent: #a88457;
+      --accent-light: #d7c0a0;
+      --text: #334155;
+      --light: #ffffff;
+      --muted: #667085;
+      --border: #d9dfdc;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Aptos", "Segoe UI", Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .hero {
+      background:
+        linear-gradient(135deg, rgba(25,49,50,0.95), rgba(55,92,93,0.92)),
+        radial-gradient(circle at top right, rgba(168,132,87,0.18), transparent 45%);
+      color: white;
+      padding: 96px 8% 112px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.25;
+    }
+
+    .hero h1 {
+      position: relative;
+      margin: 0;
+      font-size: clamp(2.6rem, 5vw, 4.8rem);
+      font-weight: 650;
+      letter-spacing: -0.04em;
+      max-width: 950px;
+      line-height: 1.02;
+    }
+
+    .hero p {
+      position: relative;
+      margin-top: 26px;
+      font-size: 1.18rem;
+      max-width: 760px;
+      color: rgba(255,255,255,0.84);
+    }
+
+    .container {
+      width: min(1180px, 92%);
+      margin: auto;
+    }
+
+    section {
+      padding: 78px 0;
+    }
+
+    .section-title {
+      font-size: 2.1rem;
+      color: var(--primary);
+      margin-bottom: 14px;
+      letter-spacing: -0.03em;
+      font-weight: 650;
+    }
+
+    .section-intro {
+      max-width: 780px;
+      color: var(--muted);
+      margin-bottom: 42px;
+      font-size: 1.05rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.86);
+      backdrop-filter: blur(6px);
+      border-radius: 24px;
+      padding: 36px;
+      border: 1px solid var(--border);
+      box-shadow: 0 14px 36px rgba(31,60,61,0.08);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 18px;
+      color: var(--primary);
+      font-size: 1.45rem;
+      font-weight: 650;
+    }
+
+    .card ul {
+      padding-left: 18px;
+      margin-bottom: 0;
+    }
+
+    .card li {
+      margin-bottom: 12px;
+    }
+
+    .highlight {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+      margin-top: 28px;
+    }
+
+    .service {
+      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(255,255,255,0.88));
+      padding: 26px;
+      border-radius: 20px;
+      border-top: 4px solid var(--accent);
+      box-shadow: 0 8px 22px rgba(31,60,61,0.06);
+    }
+
+    .service h4 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      color: var(--primary);
+      font-size: 1.05rem;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .team-member {
+      background: rgba(255,255,255,0.92);
+      border-radius: 22px;
+      padding: 30px;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 28px rgba(31,60,61,0.06);
+    }
+
+    .team-member h3 {
+      margin-bottom: 8px;
+      color: var(--primary);
+      font-size: 1.18rem;
+      font-weight: 650;
+    }
+
+    .role {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: block;
+      letter-spacing: 0.01em;
+    }
+
+    .quote {
+      background: linear-gradient(135deg, #20393a, #355b5d);
+      color: white;
+      border-radius: 28px;
+      padding: 60px;
+      text-align: center;
+      margin-top: 40px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 40px rgba(31,60,61,0.14);
+    }
+
+    .quote p {
+      margin: 0;
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      line-height: 1.4;
+      color: rgba(255,255,255,0.94);
+    }
+
+    footer {
+      background: #1a2d2e;
+      color: rgba(255,255,255,0.84);
+      padding: 48px 8%;
+      border-top: 4px solid var(--accent);
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    a {
+      color: #f0d4af;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        padding-top: 72px;
+        padding-bottom: 82px;
+      }
+
+      .quote {
+        padding: 38px 24px;
+      }
+    }
+  </style>
 </head>
 <body>
-  <h1>Hello world!</h1>
-  <p>This is my website.</p>
-  <img src="image.jpg" alt="My image" width="300">
+
+  <header class="hero">
+    <div class="container">
+      <h1>Converging Advanced Technology with Life Science Strategy</h1>
+      <p>
+        From model to market, from bench to bedside. Skillsta bridges quantitative technology,
+        AI, mathematics and regulated life sciences to build clinically relevant healthcare solutions.
+      </p>
+    </div>
+  </header>
+
+  <main>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Where Deep Technology Meets Healthcare</h2>
+        <p class="section-intro">
+          Skillsta operates at the interface between advanced computation and regulated medical innovation.
+          We support organizations that need scientific rigor, technical depth and operational execution in the same team.
+        </p>
+
+        <div class="split">
+          <div class="card">
+            <h3>Deep Technology</h3>
+            <ul>
+              <li>Algorithms, industrial mathematics and statistical modeling</li>
+              <li>Artificial intelligence and machine learning</li>
+              <li>Validation and testing of generative AI for healthcare use</li>
+              <li>Digital health, telemedicine and system integration</li>
+              <li>Development in regulated environments including ISO 13485 and IEC 62304</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Life Sciences</h3>
+            <ul>
+              <li>Medical affairs and medical-marketing strategy</li>
+              <li>Regulatory compliance including MDR, IVDR and ISO 14971</li>
+              <li>Clinical evidence generation and dissemination</li>
+              <li>Medical writing and health authority submissions</li>
+              <li>Lifecycle management and market access support</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">Core Capabilities</h2>
+
+        <div class="services">
+          <div class="service">
+            <h4>AI & Quantitative Modeling</h4>
+            <p>
+              Mathematical modeling, AI/ML implementation, statistics and validation workflows tailored for regulated healthcare products.
+            </p>
+          </div>
+
+          <div class="service">
+            <h4>Regulatory & Documentation</h4>
+            <p>
+              Technical documentation, risk analysis, IFU/DFU creation, PSUR support and submission-ready medical content.
+            </p>
+          </div>
+
+          <div class="service">
+            <h4>Medical Affairs Strategy</h4>
+            <p>
+              KOL mapping, advisory boards, literature review, competitor awareness and integrated communication planning.
+            </p>
+          </div>
+
+          <div class="service">
+            <h4>Commercialization Support</h4>
+            <p>
+              Go-to-market strategy, launch support and collaboration with innovation ecosystems including Karolinska Institute Innovations.
+            </p>
+          </div>
+        </div>
+
+        <div class="quote">
+          <p>
+            “We support innovation where scientific validity, regulatory rigor and commercial reality must align.”
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2 class="section-title">The Team</h2>
+        <p class="section-intro">
+          A multidisciplinary group combining mathematics, medicine, biology and commercialization experience.
+        </p>
+
+        <div class="team-grid">
+
+          <div class="team-member">
+            <h3>Karl Andersson, PhD</h3>
+            <span class="role">Adjunct Professor · Quantitative Biology & Innovation</span>
+            <p>
+              Mathematician turned biologist with more than 40 patents and multiple life science ventures.
+              Focused on translating quantitative analysis into clinically meaningful healthcare applications.
+            </p>
+          </div>
+
+          <div class="team-member">
+            <h3>Fabio Iachetti, MD</h3>
+            <span class="role">Medical Affairs · Digital Health · Business Strategy</span>
+            <p>
+              Board-certified physician with over 20 years of experience spanning medical affairs,
+              commercialization and digital health across multiple therapeutic areas.
+            </p>
+          </div>
+
+          <div class="team-member">
+            <h3>Mats Wallden, PhD</h3>
+            <span class="role">Quantitative Biology & Statistics</span>
+            <p>
+              Specialist in combining biological insight with mathematical and statistical methodology
+              to strengthen evidence generation and medical innovation.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <h3 style="margin:0 0 8px 0; color:white;">Skillsta</h3>
+        <div style="max-width:540px; color:rgba(255,255,255,0.72);">
+          Strategic and operative support where mathematics, AI and statistics meet healthcare,
+          biology and compliant documentation.
+        </div>
+      </div>
+
+      <div class="contacts">
+        <a href="mailto:karl@skillsta.com">karl@skillsta.com</a>
+        <a href="mailto:fabio@skillsta.com">fabio@skillsta.com</a>
+        <a href="mailto:mats@skillsta.com">mats@skillsta.com</a>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
